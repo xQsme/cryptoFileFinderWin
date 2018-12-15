@@ -10,7 +10,7 @@ cd cryptoFileFinder/release
 
 Usage:
 ```
--f   --file                   Single file to analyze
+-f   --file                    Single file to analyze
 -d   --dir      --directory   Directory to search ("~" by default)
 -s   --search                 Search for encrypted files
 -o   --output                 Output file ("output.txt" by default)
