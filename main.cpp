@@ -6,6 +6,7 @@ void mountPartitions();
 int unmount();
 QString fileLength();
 void help();
+int analyzeFile(QString file);
 
 int main(int argc, char *argv[])
 {
