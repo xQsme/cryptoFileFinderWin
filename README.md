@@ -4,7 +4,7 @@ Windows version (Linux version at https://github.com/xQsme/cryptoFileFinder)
 
 ```
 git clone https://github.com/xQsme/cryptoFileFinderWin.git
-cd cryptoFileFinder/release
+cd cryptoFileFinderWin/release
 ./cryptoFinder
 ```
 
