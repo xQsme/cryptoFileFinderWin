@@ -21,10 +21,6 @@ int main(int argc, char *argv[])
                 QCoreApplication::translate("main", "Generate test data"));
     parser.addOption(testOption);
 
-    QCommandLineOption searchOption(QStringList() << "s" << "search",
-                QCoreApplication::translate("main", "Search for encrypted files"));
-    parser.addOption(searchOption);
-
     QCommandLineOption targetOutputOption(QStringList() << "o" << "output",
                 QCoreApplication::translate("main", "Output file."),
                 QCoreApplication::translate("main", "file"));
@@ -39,6 +35,10 @@ int main(int argc, char *argv[])
                 QCoreApplication::translate("main", "File to analyze"),
                 QCoreApplication::translate("main", "file"));
     parser.addOption(fileOption);
+
+    QCommandLineOption recursiveOption(QStringList() << "n" << "non-recursive",
+                QCoreApplication::translate("main", "Single directory"));
+    parser.addOption(recursiveOption);
     parser.process(a);
 
     QStringList args = parser.optionNames();
@@ -84,24 +84,22 @@ int main(int argc, char *argv[])
     {
         testing=1;
     }
-    if(args.contains("s")  || args.contains("search"))
+    int nonRecursive=0;
+    if(args.contains("n") || args.contains("non-recursive"))
     {
-        match=1;
-        Search s;
-        s.setStuff(dir, file, &a, testing);
-        return s.search();
+        nonRecursive=1;
     }
-    if(!match){
-        help();
-    }
-    return 0;
+
+    Search s;
+    s.setStuff(dir, file, &a, testing, nonRecursive);
+    return s.search();
 }
 
 void help()
 {
     qDebug() << "Usage:\n-f   --file\t\t\tSingle file to analyze" <<
                 "\n-d   --dir\t--directory\tDirectory to search (\"~\" by default)" <<
-                "\n-s   --search\t\t\tSearch for encrypted files" <<
+                "\n-n   --non-recursive\t\tSearch a single directory" <<
                 "\n-o   --output\t\t\tOutput file (\"output.txt\" by default)" <<
                 "\n-t   --test\t--testing\tGenerate csv test data (statistical values for every file)";
 }
