@@ -4,8 +4,8 @@ Windows version (Linux version at https://github.com/xQsme/cryptoFileFinder)
 
 ```
 git clone https://github.com/xQsme/cryptoFileFinderWin.git
-cd cryptoFileFinder/release
-./cryptoFinder
+cd cryptoFileFinderWin/release
+cryptoFinder.exe
 ```
 
 Usage:
@@ -19,6 +19,6 @@ Usage:
 
 Common Usage:
 ```
-./cryptoFinder -d targetDirectory -o outputFile.csv -s -t
-./cryptoFinder -f fileToAnalyze
+cryptoFinder.exe -d targetDirectory -o outputFile.csv -s -t
+cryptoFinder.exe -f fileToAnalyze
 ```
